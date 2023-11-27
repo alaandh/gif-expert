@@ -1,6 +1,6 @@
 import { useState } from "react";
-
-export const AddCategory = () => {
+/* eslint-disable */
+export const AddCategory = ({ onNewCategory }) => {
   const [inputValue, setInputValue] = useState("");
   const onInputChange = ({ target }) => {
     setInputValue(target.value);
@@ -8,7 +8,10 @@ export const AddCategory = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log("");
+    if (inputValue.trim().length <= 1) return;
+
+    setInputValue("");
+    onNewCategory(inputValue.trim());
   };
 
   return (
