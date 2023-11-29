@@ -3,7 +3,7 @@ import { AddCategory } from "./components/AddCategory";
 import { GifGrid } from "./components/GifGrid";
 /* eslint-disable */
 export const GifExpert = () => {
-  const [categories, setCategories] = useState(["Dragon Ball"]);
+  const [categories, setCategories] = useState([""]);
 
   const ondAddCategory = (newCategory) => {
     if (categories.includes(newCategory)) return;
@@ -19,6 +19,8 @@ export const GifExpert = () => {
       {categories.map((category) => (
         <GifGrid key={category} category={category} />
       ))}
+
+      <small className="small">Creado por Alan Heizenreder</small>
     </>
   );
 };

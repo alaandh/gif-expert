@@ -7,7 +7,11 @@ export const GifGrid = ({ category }) => {
 
   const getImages = async () => {
     const newImages = await getGifs(category);
-    setImages(newImages);
+    if (newImages) {
+      setImages(newImages);
+    } else {
+      console.error("No se pudieron obtener las imágenes");
+    }
   };
 
   useEffect(() => {
@@ -19,9 +23,9 @@ export const GifGrid = ({ category }) => {
       <h3>{category}</h3>
 
       <div className="card-grid">
-        {images.map(({ image }) => (
-          <GifItem key={image.id} {...image} />
-        ))}
+        {images.map((image) =>
+          image ? <GifItem key={image.id} {...image} /> : null
+        )}
       </div>
     </>
   );
